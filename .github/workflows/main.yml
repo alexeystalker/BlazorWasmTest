@@ -26,7 +26,11 @@ jobs:
       # меняем '/' на '/BlazorGitHubPagesDemo/'
     - name: Change base-tag in index.html from / to BlazorWasmTest
       run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorWasmTest\/" \/>/g' release/wwwroot/index.html
-      
+
+      # отключаем jekyll
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
+
     - name: Uploading files to gh-pages branch
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
